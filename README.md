@@ -12,9 +12,15 @@ Ghost Pepper is a general purpose Discord bot. The way it is currently setup, it
 1. Under applications, select "New Application". Title it Ghost Pepper Discord Bot.
 1. On the left hand side, select "bot", then "Add Bot" and "Yes, do it!".
 1. Click on the discord logo and locate the bots folder and select _icon.png_ (Not Yet availible).
-1. Click "Copy" and paste the coppied string of text in the file named token.json where it says, "your-token-here".
+1. Click "Copy" and then create a file in the main Ghost Pepper directory called token.json
+1. Paste the following code into the file but replace `your-token-here` with your token you copied from the application page.
+```
+{
+    "token": "your-token-here"
+}
+```
 1. Save the file then navigate to the PowerShell window.
-1. In the PowerShell window type `node .`.
+1. In the PowerShell window type `node .`
 
     The bot is now running. You can start the bot at any time in the same way. To stop the bot, select the window and do CTRL + C.
 
