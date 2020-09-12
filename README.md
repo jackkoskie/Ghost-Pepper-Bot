@@ -4,7 +4,7 @@ Ghost Pepper is a general purpose Discord bot. The way it is currently setup, it
 ## Instalation Instructions
 1. Unzip file.
 1. Hold SHIFT and right-click in the empty space of the folder and select "Open PowerShell window here".
-1. Type " `npm --version` " and press enter.
+1. Type `npm --version` and press enter.
 
     If you get an error, go to nodejs.org and install node. Otherwise continue with the folowing steps.
 
@@ -14,7 +14,7 @@ Ghost Pepper is a general purpose Discord bot. The way it is currently setup, it
 1. Click on the discord logo and locate the bots folder and select _icon.png_ (Not Yet availible).
 1. Click "Copy" and paste the coppied string of text in the file named token.json where it says, "your-token-here".
 1. Save the file then navigate to the PowerShell window.
-1. In the PowerShell window type " `node .`".
+1. In the PowerShell window type `node .`.
 
     The bot is now running. You can start the bot at any time in the same way. To stop the bot, select the window and do CTRL + C.
 
