@@ -25,6 +25,8 @@ Ghost Pepper is a general purpose Discord bot. The way it is currently setup, it
 
     The bot has now been added to your server. 
 
+    To remove, simply right click the bot on the left hand side and select "Kick".
+
 
 ## Settings
 Anything settings that can be changed will be under config.json.
