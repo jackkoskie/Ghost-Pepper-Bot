@@ -1,6 +1,6 @@
 const fs = require('fs');
 const Discord = require('discord.js');
-const config = require('./config.json');
+const { prefix, token } = require('./config.json')
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -12,16 +12,16 @@ client.once('ready', () => {
 });
 
 client.on('message', message => {
-	if (!message.content.startsWith(config.prefix) || message.author.bot) return;
+	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();
 
-    switch ( args, message) {
-        case ping:
+    switch (args[0]) {
+        case "ping":
             client.commands.get('ping').execute(message, args);
             break;
     }
 });
 
-client.login(config.token);
+client.login(token);
