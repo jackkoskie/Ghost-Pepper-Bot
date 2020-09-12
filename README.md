@@ -3,3 +3,16 @@ Ghost Pepper is a general purpose Discord bot. The way it is currently setup, it
 
 ## Instalation Instructions
 _Coming Soon!_
+
+## Settings
+Anything settings that can be changed will be under config.json.
+
+- Prefix
+
+    The prefix that will be used before any and all commands
+- Version
+    
+    The current version of the bot (Not to be changed!)
+
+## List of Commands
+_Comming Soon!_
