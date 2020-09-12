@@ -24,6 +24,10 @@ client.on('message', message => {
         case "ping":
             client.commands.get('ping').execute(message, args);
         break;
+
+        case "version":
+            client.commands.get('version').execute(message, args, config );
+        break;
     }
  
 });
