@@ -19,7 +19,8 @@ client.on('ready', () => {
  
 client.on('message', message => {
     let args = message.content.substring(config.prefix.length).split(" ");
- 
+    
+    
     switch (args[0]) {
  
         case "ping":
@@ -28,6 +29,10 @@ client.on('message', message => {
 
         case "version":
             client.commands.get('version').execute(message, args, config );
+        break;
+
+        case "kick":
+            client.commands.get('kick').execute(message, args);
         break;
     }
  
