@@ -1,0 +1,22 @@
+{
+  "name": "ghost-pepper-bot",
+  "version": "1.0.0",
+  "description": "Ghost Pepper is a general purpose Discord bot. The way it is currently setup, it will run on your own system and will use your own system resources. If this gets enough stars, then I will host it my self to make it easier for you to use.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GoldenXLence/Ghost-Pepper-Bot.git"
+  },
+  "author": "GoldenXLence",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GoldenXLence/Ghost-Pepper-Bot/issues"
+  },
+  "homepage": "https://github.com/GoldenXLence/Ghost-Pepper-Bot#readme",
+  "dependencies": {
+    "discord.js": "^12.3.1"
+  }
+}
