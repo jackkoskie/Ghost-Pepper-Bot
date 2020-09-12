@@ -28,16 +28,21 @@ client.on('message', message => {
     switch (args[0]) {
  
         case "ping":
-            client.commands.get('ping').execute(message, args);
+            client.commands.get('ping').execute(message, args, config);
         break;
 
         case "version":
-            client.commands.get('version').execute(message, args, config );
+            client.commands.get('version').execute(message, args, config);
+        break;
+
+        case "ver":
+            client.command.get('version').execute(message, args, config);
         break;
 
         case "kick":
-            client.commands.get('kick').execute(message, args);
+            client.commands.get('kick').execute(message, args, config);
         break;
+
     }
  
 });
