@@ -41,6 +41,31 @@ Anything settings that can be changed will be under config.json.
 
     The exact name of your moderators role.
 
+- banMessage
+
+    The message the user is shown when they are banned.
+
+    Variables:
+    
+    `${message.guild}` - The server name
+
+    `${message.author}` - The person doing the banning
+
+    `${user.tag}` - The person being banned
+
+- kickMessage
+
+    The message the user is shown when they are banned.
+    
+    Variables:
+    
+    `${message.guild}` - The server name
+
+    `${message.author}` - The person doing the banning
+
+    `${user.tag}` - The person being banned
+    
+
 ## List of Commands
 - Version
 

@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'kick',
 	description: 'basic kick command',
-	execute(message, args) {
+	execute(message, args, config) {
         if (message.member.roles.cache.some(role => role.name === config.modRole)) {
             // Looks for the mentioned user
             const user = message.mentions.users.first();
@@ -11,7 +11,7 @@ module.exports = {
                 const member = message.guild.member(user);
                 if(member){
                     // Kicks the user
-                    member.kick(`You have been kicked from ${message.guild} by ${message.author}.`).then(() =>{
+                    member.kick(config.kickMessage).then(() =>{
                         message.reply(`sucessfuly kicked ${user.tag}.`);
                         console.log(`Sucsessfuly kicked ${user.tag} in ${message.guild}`)
                     }).catch(err =>{
