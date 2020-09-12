@@ -9,10 +9,13 @@ Anything settings that can be changed will be under config.json.
 
 - Prefix
 
-    The prefix that will be used before any and all commands
+    The prefix that will be used before any and all commands.
 - Version
     
     The current version of the bot (Not to be changed!)
+- modRole
+
+    The exact name of your moderators role.
 
 ## List of Commands
 _Comming Soon!_
