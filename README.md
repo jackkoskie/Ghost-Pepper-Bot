@@ -18,4 +18,16 @@ Anything settings that can be changed will be under config.json.
     The exact name of your moderators role.
 
 ## List of Commands
-_Comming Soon!_
+- Version
+
+    Usage: version
+
+    Aliases: ver
+
+- Kick
+
+    Usage: kick {user}
+
+- Ban
+
+    Usage: ban {user}
