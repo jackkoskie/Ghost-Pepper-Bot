@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require('./config.json');
 const token = require('./token.json');
+const ms = require('ms');
 
 const fs = require('fs');
 client.commands = new Discord.Collection();
@@ -45,6 +46,10 @@ client.on('message', message => {
 
         case "ban":
             client.commands.get('ban').execute(message, args, config);
+        break;
+
+        case "mute":
+            client.commands.get('mute').execute(message, args, config);
         break;
     }
  
