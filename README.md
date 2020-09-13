@@ -70,6 +70,14 @@ Anything settings that can be changed will be under config.json.
     `${message.author}` - The person doing the banning
 
     `${user.tag}` - The person being banned
+
+-  memberRole
+
+    The role that all of your members will have
+
+- mutedRole
+
+    The role that will be given to a member when they are muted. Make sure to give no permissions except `Real Text Channels & See Voice Channels`.
     
 
 ## List of Commands
@@ -86,3 +94,9 @@ Anything settings that can be changed will be under config.json.
 - Ban
 
     Usage: ban {user}
+
+- Mute
+
+    Usage: mute {user} {time [s, m, h, d,]}
+
+    Time: s = Seconds, m = Minutes, h = Hours, d = Days.
