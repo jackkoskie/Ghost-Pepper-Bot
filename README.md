@@ -77,7 +77,7 @@ Anything settings that can be changed will be under config.json.
 
 - mutedRole
 
-    The role that will be given to a member when they are muted. Make sure to give no permissions except `Real Text Channels & See Voice Channels`.
+    The role that will be given to a member when they are muted. Make sure to give no permissions except `Read Text Channels & See Voice Channels`.
     
 
 ## List of Commands
