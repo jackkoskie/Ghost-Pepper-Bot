@@ -23,9 +23,18 @@ client.on('ready', () => {
 
 // Listens for a message and checks if its a command
 client.on('message', message => {
-    let args = message.content.substring(config.prefix.length).split(" ");
+    let args = message.content.toLowerCase().substring(config.prefix.length).split(" ");
     
-    // Launches the appropriet command file
+    // Checks if message contains anythins listed
+    for (var i = 0; i < config.forbiddenWords.length; i++) {
+        if (message.content.toLowerCase().includes(config.forbiddenWords[i])) {
+          message.delete();
+          message.reply('you cant say that here!')
+          break;
+        }
+    }
+
+    // Launches the appropriate command file
     switch (args[0]) {
  
         case "ping":

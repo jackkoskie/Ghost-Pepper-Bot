@@ -79,6 +79,16 @@ Anything settings that can be changed will be under config.json.
 
     The role that will be given to a member when they are muted. Make sure to give no permissions except `Read Text Channels & See Voice Channels`.
     
+- forbiddenWords
+
+    Words that will trigger the automod to delete the message. Use `"",` for each word. For example:
+
+    ```
+    {
+        "forbiddenWords": ["yellow", "cows", "chille peppers"]
+    }
+    ```
+
 
 ## List of Commands
 - Version
