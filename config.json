@@ -5,6 +5,5 @@
     "kickMessage": "You have been kicked from ${message.guild} by ${message.author}.",
     "banMessage": "You have been banned from ${message.guild} by ${message.author}.",
     "memberRole": "Member",
-    "mutedRole": "Muted",
-    "forbiddenWords": [""]
+    "mutedRole": "Muted"
 }

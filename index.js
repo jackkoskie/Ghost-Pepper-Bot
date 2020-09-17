@@ -25,14 +25,20 @@ client.on('ready', () => {
 client.on('message', message => {
     let args = message.content.toLowerCase().substring(config.prefix.length).split(" ");
     
-    // Checks if message contains anythins listed
-    for (var i = 0; i < config.forbiddenWords.length; i++) {
-        if (message.content.toLowerCase().includes(config.forbiddenWords[i])) {
-          message.delete();
-          message.reply('you cant say that here!')
-          break;
+    if (autoMod.autoMod = 1) {
+
+        // Banned Words
+        if (autoMod.bannedWords = 1) {
+            for (var i = 0; i < autoMod.bannedWordsList.length; i++) {
+                if (message.content.toLowerCase().includes(config.bannedWordsList[i])) {
+                  message.delete();
+                  message.reply('you cant say that here!')
+                  break;
+                }
+            }
         }
     }
+    
 
     // Launches the appropriate command file
     switch (args[0]) {
@@ -42,11 +48,8 @@ client.on('message', message => {
         break;
 
         case "version":
-            client.commands.get('version').execute(message, args, config);
-        break;
-
         case "ver":
-            client.command.get('version').execute(message, args, config);
+            client.commands.get('version').execute(message, args, config);
         break;
 
         case "kick":
