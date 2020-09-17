@@ -18,7 +18,7 @@ for(const file of commandFiles){
 
 // Tells the console when the bot has logged on
 client.on('ready', () => {
-    console.log("Ready!");
+    console.log("The bot is ONLINE");
 });
 
 // Listens for a message and checks if its a command

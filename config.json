@@ -1,6 +1,6 @@
 {
     "prefix": "!",
-    "version": "GP-1.0.1",
+    "version": "GP-1.1.0",
     "modRole": "Mod",
     "kickMessage": "You have been kicked from ${message.guild} by ${message.author}.",
     "banMessage": "You have been banned from ${message.guild} by ${message.author}.",
