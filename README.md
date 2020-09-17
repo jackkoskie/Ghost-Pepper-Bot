@@ -35,7 +35,7 @@ Ghost Pepper is a general purpose Discord bot. The way it is currently setup, it
 
 
 ## Settings
-Anything settings that can be changed will be under config.json.
+### Any settings that can be changed will be under config.json.
 
 - Prefix
 
@@ -79,16 +79,22 @@ Anything settings that can be changed will be under config.json.
 
     The role that will be given to a member when they are muted. Make sure to give no permissions except `Read Text Channels & See Voice Channels`.
     
-- forbiddenWords
+### The following settings are located under autoMod.json
 
-    Words that will trigger the automod to delete the message. Use `"",` for each word. For example:
+- autoMod
 
+    Toggles if the AutoMod is on. This will overwrite any other AutoMod toggles. Can hold either a `1` or a `0`.
+
+- bannedWords
+    
+    Toggles if the AutoMod will sort out messages containing words listed under `bannedWordsList`. Can hold either a `1` or a `0`.
+
+- bannedWordsList
+
+    List of words that will be sorted out. Format like:
     ```
-    {
-        "forbiddenWords": ["yellow", "cows", "chille peppers"]
-    }
+    "bannedWordsList": ["yellow", "habenaros"]
     ```
-
 
 ## List of Commands
 - Version
