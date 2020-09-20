@@ -1,5 +1,5 @@
 # Ghost Pepper Bot
-Ghost Pepper is a general purpose Discord bot. The way it is currently setup, it will run on your own system and will use your own system resources. If this gets enough stars, then I will host it my self to make it easier for you to use.
+Ghost Pepper is a general purpose Discord bot. The way it is currently setup, it will run on your own system and will use your own system resources.
 
 ## Instalation Instructions
 1. Run `GP-Installer.exe` and follow any prompts
@@ -11,7 +11,7 @@ Ghost Pepper is a general purpose Discord bot. The way it is currently setup, it
 1. Go to discord.com/developers and sign in with an existing Discord account.
 1. Under applications, select "New Application". Title it Ghost Pepper Discord Bot.
 1. On the left hand side, select "bot", then "Add Bot" and "Yes, do it!".
-1. Click on the discord logo and locate the bots folder and select _icon.png_ (Not Yet availible).
+1. Click on the discord logo and locate the bots folder and select _avatar.png_.
 1. Click "Copy" and then open the file titled token.json in your choise of text editor.
 1. You'll see the folowing code. Replace `your-token-here` with your token you copied from the Discord website.
 ```
