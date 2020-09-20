@@ -56,7 +56,7 @@ client.on('message', message => {
         break;
 
         case "kick":
-            client.commands.get('kick').execute(message, args, config, auto);
+            client.commands.get('kick').execute(message, args, config);
         break;
 
         case "ban":
