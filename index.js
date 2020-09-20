@@ -1,9 +1,12 @@
 // All the requires
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const config = require('./config.json');
 const token = require('./token.json');
 const ms = require('ms');
+
+// JSON Files
+const config = require('./config.json');
+const autoMod = require('./autoMod.json');
 
 const fs = require('fs');
 client.commands = new Discord.Collection();
@@ -53,7 +56,7 @@ client.on('message', message => {
         break;
 
         case "kick":
-            client.commands.get('kick').execute(message, args, config);
+            client.commands.get('kick').execute(message, args, config, auto);
         break;
 
         case "ban":
