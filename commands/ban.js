@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'ban',
 	description: 'basic ban command',
-	execute(message, args, config) {
+	execute(message, args, config, Discord) {
         if (message.member.roles.cache.some(role => role.name === config.modRole)) {
             // Looks for the mentioned user
             const user = message.mentions.users.first();
@@ -16,7 +16,21 @@ module.exports = {
 
                     // Bans the user
                     member.ban({reason: banReason}).then(() =>{
-                        message.reply(`sucessfuly banned ${user.tag}.`);
+                        
+                        // Makes/Sends Embed
+                        const banEmbed = new Discord.MessageEmbed()
+                            .setColor('#ED1C24')
+                            .setTitle('~kick~')
+                            .setAuthor('Ghost Pepper Bot', 'https://cdn.discordapp.com/avatars/753727823264481379/22d88b924f2dab2a2e5d90ad78a1eb7a.webp?size=128', 'https://github.com/goldenxlence/ghost-pepper-bot')
+                            .addField('User Banned:', `<@${member.id}>`)
+                            .addField('Banned By:', `<@${message.author.id}>`)
+                            .addField('Banned in:', `${message.channel}`)
+                            .addField('Reason', `${banReason}`)
+                            .setTimestamp()
+                            .setFooter('Ghost Pepper Discord Bot');
+
+                        message.channel.send(banEmbed);
+
                         console.log(`Sucsessfuly banned ${user.tag} in ${message.guild}`)
                     }).catch(err =>{
                         // Catches any errors

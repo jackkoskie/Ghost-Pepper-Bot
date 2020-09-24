@@ -62,7 +62,7 @@ client.on('message', message => {
 
         case "ban":
         case "b":
-            client.commands.get('ban').execute(message, args, config);
+            client.commands.get('ban').execute(message, args, config, Discord);
         break;
 
         case "mute":
