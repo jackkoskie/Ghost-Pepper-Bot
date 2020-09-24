@@ -83,9 +83,13 @@ Ghost Pepper is a general purpose Discord bot. The way it is currently setup, it
 
     Usage: kick {user} [reason]
 
+    Aliases: k
+
 - Ban
 
     Usage: ban {user} [reason]
+
+    Aliases: b
 
 - Mute
 

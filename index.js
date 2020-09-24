@@ -56,10 +56,12 @@ client.on('message', message => {
         break;
 
         case "kick":
+        case "k":
             client.commands.get('kick').execute(message, args, config);
         break;
 
         case "ban":
+        case "b":
             client.commands.get('ban').execute(message, args, config);
         break;
 
