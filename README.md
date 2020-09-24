@@ -47,33 +47,9 @@ Ghost Pepper is a general purpose Discord bot. The way it is currently setup, it
 
     The exact name of your moderators role.
 
-- banMessage
-
-    The message the user is shown when they are banned.
-
-    Variables:
-    
-    `${message.guild}` - The server name
-
-    `${message.author}` - The person doing the banning
-
-    `${user.tag}` - The person being banned
-
-- kickMessage
-
-    The message the user is shown when they are banned.
-    
-    Variables:
-    
-    `${message.guild}` - The server name
-
-    `${message.author}` - The person doing the banning
-
-    `${user.tag}` - The person being banned
-
 -  memberRole
 
-    The role that all of your members will have
+    The exact name of the role that all of your members will have
 
 - mutedRole
 
@@ -105,11 +81,11 @@ Ghost Pepper is a general purpose Discord bot. The way it is currently setup, it
 
 - Kick
 
-    Usage: kick {user}
+    Usage: kick {user} [reason]
 
 - Ban
 
-    Usage: ban {user}
+    Usage: ban {user} [reason]
 
 - Mute
 
