@@ -10,8 +10,12 @@ module.exports = {
                 // Checks if the user mentioned is in the server
                 const member = message.guild.member(user);
                 if(member){
+
+                    // Gets the ban reason
+                    const banReason = args.slice(2).join(' ');
+
                     // Bans the user
-                    member.ban({reason: config.banMessage}).then(() =>{
+                    member.ban({reason: banReason}).then(() =>{
                         message.reply(`sucessfuly banned ${user.tag}.`);
                         console.log(`Sucsessfuly banned ${user.tag} in ${message.guild}`)
                     }).catch(err =>{

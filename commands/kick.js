@@ -10,8 +10,12 @@ module.exports = {
                 // Checks if the user mentioned is in the server
                 const member = message.guild.member(user);
                 if(member){
+
+                // Gets the kick reason
+                const kickReason = args.slice(2).join(' ');
+
                     // Kicks the user
-                    member.kick(config.kickMessage).then(() =>{
+                    member.kick(kickReason).then(() =>{
                         message.reply(`sucessfuly kicked ${user.tag}.`);
                         console.log(`Sucsessfuly kicked ${user.tag} in ${message.guild}`)
                     }).catch(err =>{
