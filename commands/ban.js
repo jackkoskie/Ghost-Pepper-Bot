@@ -11,7 +11,7 @@ module.exports = {
                 const member = message.guild.member(user);
                 if(member){
                     // Bans the user
-                    member.ban(config.banMessage).then(() =>{
+                    member.ban({reason: config.banMessage}).then(() =>{
                         message.reply(`sucessfuly banned ${user.tag}.`);
                         console.log(`Sucsessfuly banned ${user.tag} in ${message.guild}`)
                     }).catch(err =>{
