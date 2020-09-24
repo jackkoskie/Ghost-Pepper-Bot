@@ -57,7 +57,7 @@ client.on('message', message => {
 
         case "kick":
         case "k":
-            client.commands.get('kick').execute(message, args, config);
+            client.commands.get('kick').execute(message, args, config, Discord);
         break;
 
         case "ban":

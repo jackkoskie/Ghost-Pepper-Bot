@@ -1,12 +1,16 @@
 module.exports = {
 	name: 'kick',
 	description: 'basic kick command',
-	execute(message, args, config) {
+	execute(message, args, config, Discord) {
         if (message.member.roles.cache.some(role => role.name === config.modRole)) {
             // Looks for the mentioned user
             const user = message.mentions.users.first();
 
             if(user){
+
+                // Deletes the original message
+                message.delete({ timeout: 500 }).catch(console.error);
+
                 // Checks if the user mentioned is in the server
                 const member = message.guild.member(user);
                 if(member){
@@ -16,12 +20,27 @@ module.exports = {
 
                     // Kicks the user
                     member.kick(kickReason).then(() =>{
-                        message.reply(`sucessfuly kicked ${user.tag}.`);
+                        
+                        // Makes Embed
+                        const kickEmbed = new Discord.MessageEmbed()
+                            .setColor('#ED1C24')
+                            .setTitle('~kick~')
+                            .setAuthor('Ghost Pepper Bot', 'https://cdn.discordapp.com/avatars/753727823264481379/22d88b924f2dab2a2e5d90ad78a1eb7a.webp?size=128', 'https://github.com/goldenxlence/ghost-pepper-bot')
+                            .addField('User Kicked:', `<@${member.id}>`)
+                            .addField('Kicked By:', `<@${message.author.id}>`)
+                            .addField('Kicked in:', `${message.channel}`)
+                            .addField('Reason', `${kickReason}`)
+                            .setTimestamp()
+                            .setFooter('Ghost Pepper Discord Bot');
+
+                        message.channel.send(kickEmbed);
+
                         console.log(`Sucsessfuly kicked ${user.tag} in ${message.guild}`)
                     }).catch(err =>{
                         // Catches any errors
                         message.reply(`I encountered an error when trying to kick ${user.tag}`);
                         console.log(`Error kicking ${user.tag} in ${message.guild}`);
+                        console.error(err);
                     })
                 } else {
                     message.reply(`That user isn\'t in the server.`)
