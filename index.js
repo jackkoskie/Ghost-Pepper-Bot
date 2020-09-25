@@ -66,7 +66,7 @@ client.on('message', message => {
         break;
 
         case "mute":
-            client.commands.get('mute').execute(message, args, config);
+            client.commands.get('mute').execute(message, args, config, Discord);
         break;
     }
  
