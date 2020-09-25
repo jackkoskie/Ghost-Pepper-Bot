@@ -25,7 +25,7 @@ module.exports = {
                             .addField('User Banned:', `<@${member.id}>`)
                             .addField('Banned By:', `<@${message.author.id}>`)
                             .addField('Banned in:', `${message.channel}`)
-                            .addField('Reason', `${banReason}`)
+                            .addField('Reason:', `${banReason}`)
                             .setTimestamp()
                             .setFooter('Ghost Pepper Discord Bot');
 
