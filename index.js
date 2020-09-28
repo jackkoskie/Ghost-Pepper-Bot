@@ -3,12 +3,8 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const token = require('./token.json');
 const ms = require('ms');
-<<<<<<< HEAD
 const GuildModel = require('./models/Guild');
 const mongoose = require('mongoose');
-=======
-client.mongoose = require('./utils/mongoose.js');
->>>>>>> 6074cc7d45e4b494514d8b5c8fc1c5d38387810c
 
 // JSON Files
 const config = require('./config.json');
@@ -99,13 +95,9 @@ client.on('message', message => {
 });
 
 // Logs the bot in
-<<<<<<< HEAD
 mongoose.connect('mongodb+srv://jkoskie:Kiki1905@gp-bot.9zl8z.azure.mongodb.net/gp-bot?retryWrites=true&w=majority', {
         useNewUrlParser: true,
         useFindAndModify: false,
         useUnifiedTopology: true
 });
-=======
-client.mongoose.init();
->>>>>>> 6074cc7d45e4b494514d8b5c8fc1c5d38387810c
 client.login(token.token);
