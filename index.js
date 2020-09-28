@@ -3,6 +3,12 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const token = require('./token.json');
 const ms = require('ms');
+<<<<<<< HEAD
+const GuildModel = require('./models/Guild');
+const mongoose = require('mongoose');
+=======
+client.mongoose = require('./utils/mongoose.js');
+>>>>>>> 6074cc7d45e4b494514d8b5c8fc1c5d38387810c
 
 // JSON Files
 const config = require('./config.json');
@@ -22,6 +28,18 @@ for(const file of commandFiles){
 // Tells the console when the bot has logged on
 client.on('ready', () => {
     console.log("The bot is ONLINE");
+});
+
+//  Listens for and deals with events
+fs.readdir('./events/', (err, files) => {
+    if (err) return console.error;
+    files.forEach(file => {
+        if (!file.endsWith('.js')) return;
+        const evt = require(`./events/${file}`);
+        let evtName = file.split('.')[0];
+        console.log(`Loaded event '${evtName}'`);
+        client.on(evtName, evt.bind(null, client));
+    });
 });
 
 // Listens for a message and checks if its a command
@@ -68,9 +86,26 @@ client.on('message', message => {
         case "mute":
             client.commands.get('mute').execute(message, args, config, Discord);
         break;
+
+        case "setup":
+            client.commands.get('setup').execute(message, args, config, Discord, mongoose, GuildModel);
+        break;
+
+        case "prefix":
+            client.commands.get('prefix').execute(message, args, config, Discord, mongoose, GuildModel)
+        break;
     }
  
 });
 
 // Logs the bot in
+<<<<<<< HEAD
+mongoose.connect('mongodb+srv://jkoskie:Kiki1905@gp-bot.9zl8z.azure.mongodb.net/gp-bot?retryWrites=true&w=majority', {
+        useNewUrlParser: true,
+        useFindAndModify: false,
+        useUnifiedTopology: true
+});
+=======
+client.mongoose.init();
+>>>>>>> 6074cc7d45e4b494514d8b5c8fc1c5d38387810c
 client.login(token.token);

@@ -1,0 +1,13 @@
+Idea Board
+
+-----
+
+
+
+-----
+
+./commands/help.js
+
+Create a nice looking help menu (using embed)
+
+
