@@ -25,6 +25,14 @@ for(const file of commandFiles){
 // Tells the console when the bot has logged on
 client.on('ready', () => {
     console.log("The bot is ONLINE");
+
+    // Set activity
+    try {
+        client.user.setActivity(`${config.activity}`, { type: LISTENING }); // LISTENING PLAYING STREAMING
+        console.log(`Set activity to ${config.activity}`)
+    } catch(err) {
+        console.error(err);
+    }
 });
 
 // Listens for a message and checks if its a command
@@ -42,9 +50,13 @@ client.on('message', message => {
             if (req.bannedWords = true) {
                 for (var i = 0; i < req.bannedWordsList.length; i++) {
                     if (message.content.toLowerCase().includes(req.bannedWordsList[i])) {
-                      message.delete();
-                      message.reply('you cant say that here!')
-                      break;
+                        try {
+                            message.delete();
+                            message.reply('you cant say that here!');
+                        } catch(err) {
+                            console.error(`Error trying to delete a message in ${message.guild.name}`);
+                        }
+                    break;
                     }
                 }
             }

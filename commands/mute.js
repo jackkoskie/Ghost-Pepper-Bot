@@ -31,7 +31,8 @@ module.exports = {
                     .setAuthor('Ghost Pepper Bot', 'https://cdn.discordapp.com/avatars/753727823264481379/22d88b924f2dab2a2e5d90ad78a1eb7a.webp?size=128', 'https://github.com/goldenxlence/ghost-pepper-bot')
                     .addField('User Muted:', `<@${person.id}>`)
                     .addField('Muted By:', `<@${message.author.id}>`)
-                    .addField('Muted in:', `${message.channel}`)
+                    .addField('Muted in:', `${message.channel.id}`)
+                    .addFIeld('Muted for:', `${muteTime}`)
                     .addField('Reason:', `${muteReason}`)
                     .setTimestamp()
                     .setFooter('Ghost Pepper Discord Bot');
