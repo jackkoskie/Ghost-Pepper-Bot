@@ -3,8 +3,9 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const token = require('./token.json');
 const ms = require('ms');
-const GuildModel = require('./models/Guild');
-const mongoose = require('mongoose');
+var GuildModel = require('./models/Guild');
+var mongoose = require('mongoose');
+var database = require('./database.json');
 
 // JSON Files
 const config = require('./config.json');
@@ -26,21 +27,15 @@ client.on('ready', () => {
     console.log("The bot is ONLINE");
 });
 
-//  Listens for and deals with events
-fs.readdir('./events/', (err, files) => {
-    if (err) return console.error;
-    files.forEach(file => {
-        if (!file.endsWith('.js')) return;
-        const evt = require(`./events/${file}`);
-        let evtName = file.split('.')[0];
-        console.log(`Loaded event '${evtName}'`);
-        client.on(evtName, evt.bind(null, client));
-    });
-});
-
 // Listens for a message and checks if its a command
 client.on('message', message => {
-    let args = message.content.toLowerCase().substring(config.prefix.length).split(" ");
+
+    var GuildModel = require('./models/Guild');
+    var mongoose = require('mongoose');
+    var database = require('./database.json');
+
+    var req = GuildModel.findOne({ "id": message.guild.id }, function (err, req) {
+        let args = message.content.toLowerCase().substring(req.prefix.length).split(" ");
     
     if (autoMod.autoMod = 1) {
 
@@ -80,7 +75,7 @@ client.on('message', message => {
         break;
 
         case "mute":
-            client.commands.get('mute').execute(message, args, config, Discord);
+            client.commands.get('mute').execute(message, args, config, Discord, mongoose, GuildModel);
         break;
 
         case "setup":
@@ -88,14 +83,14 @@ client.on('message', message => {
         break;
 
         case "prefix":
-            client.commands.get('prefix').execute(message, args, config, Discord, mongoose, GuildModel)
+            client.commands.get('prefix').execute(message, args, config, Discord, mongoose, GuildModel);
         break;
     }
- 
+    })
 });
 
 // Logs the bot in
-mongoose.connect('mongodb+srv://jkoskie:Kiki1905@gp-bot.9zl8z.azure.mongodb.net/gp-bot?retryWrites=true&w=majority', {
+mongoose.connect(database.url , {
         useNewUrlParser: true,
         useFindAndModify: false,
         useUnifiedTopology: true

@@ -11,12 +11,19 @@ module.exports = {
                 };
             })
         } else {
-            var req = GuildModel.findOneAndUpdate(
-                { "id": message.guild.id}, 
-                { $set: { prefix: `${args[2]}`} }, function (err, req) {
-                    
+            var req = GuildModel.findOne({ "id": message.guild.id }, function (err, req) {
+                if (message.member.roles.cache.some(role => role.name === req.mod)) {
+                    var req = GuildModel.findOneAndUpdate(
+                        { "id": message.guild.id}, 
+                        { $set: { prefix: `${args[2]}`} }, function (err, req) {
+                            message.reply(`Set the servers prefix to ${req.prefix}`)
+                        }
+                    );
+                } else {
+                    message.reply(`Sorry, you do not have permission to set the prefix of the server.`)
+                    message.channel.send(`Hint: Try \`${GuildModel.prefix}prefix\` to view the current prefix.`)
                 }
-                )
+            })
         }
 	},
 };
