@@ -35,6 +35,8 @@ module.exports = {
 
                         message.channel.send(kickEmbed);
 
+                        member.id.send(`You have been kicked from ${message.guild.name} by ${message.author} for the following reason: ${kickReason}`);
+
                         console.log(`Sucsessfuly kicked ${user.tag} in ${message.guild}`)
                     }).catch(err =>{
                         // Catches any errors

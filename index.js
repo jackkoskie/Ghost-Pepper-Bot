@@ -29,39 +29,33 @@ client.on('ready', () => {
 
 // Listens for a message and checks if its a command
 client.on('message', message => {
+    let args = message.content.toLowerCase().substring(config.prefix.length).split(" ");
 
     var GuildModel = require('./models/Guild');
     var mongoose = require('mongoose');
     var database = require('./database.json');
 
-    var req = GuildModel.findOne({ "id": message.guild.id }, function (err, req) {
-        let args = message.content.toLowerCase().substring(req.prefix.length).split(" ");
-    
-    if (autoMod.autoMod = 1) {
+    var req = GuildModel.findOne({ id: message.server.id }, function (err, req) {
+        if (req.autoMod = true) {
 
-        // Banned Words
-        if (autoMod.bannedWords = 1) {
-            for (var i = 0; i < autoMod.bannedWordsList.length; i++) {
-                if (message.content.toLowerCase().includes(config.bannedWordsList[i])) {
-                  message.delete();
-                  message.reply('you cant say that here!')
-                  break;
+            // Banned Words
+            if (req.bannedWords = true) {
+                for (var i = 0; i < req.bannedWordsList.length; i++) {
+                    if (message.content.toLowerCase().includes(req.bannedWordsList[i])) {
+                      message.delete();
+                      message.reply('you cant say that here!')
+                      break;
+                    }
                 }
             }
         }
-    }
-    
+    })
 
     // Launches the appropriate command file
     switch (args[0]) {
  
         case "ping":
             client.commands.get('ping').execute(message, args, config);
-        break;
-
-        case "version":
-        case "ver":
-            client.commands.get('version').execute(message, args, config);
         break;
 
         case "kick":
@@ -83,10 +77,13 @@ client.on('message', message => {
         break;
 
         case "prefix":
-            client.commands.get('prefix').execute(message, args, config, Discord, mongoose, GuildModel);
+            client.commands.get('prefix').execute(message, args, config, Discord);
+        break;
+
+        case "settings":
+            client.commands.get('settings').execute(messgae, args, config, Discord, mongoose, GuildModel);
         break;
     }
-    })
 });
 
 // Logs the bot in
