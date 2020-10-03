@@ -16,9 +16,9 @@ client.commands = new Discord.Collection();
 
 // Tells bot where to find the commands files
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
-for(const file of commandFiles){
+for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
- 
+
     client.commands.set(command.name, command);
 }
 
@@ -30,7 +30,7 @@ client.on('ready', () => {
     try {
         client.user.setActivity(`${config.activity}`, { type: LISTENING }); // LISTENING PLAYING STREAMING
         console.log(`Set activity to ${config.activity}`)
-    } catch(err) {
+    } catch (err) {
         console.error(err);
     }
 });
@@ -53,10 +53,10 @@ client.on('message', message => {
                         try {
                             message.delete();
                             message.reply('you cant say that here!');
-                        } catch(err) {
+                        } catch (err) {
                             console.error(`Error trying to delete a message in ${message.guild.name}`);
                         }
-                    break;
+                        break;
                     }
                 }
             }
@@ -65,43 +65,43 @@ client.on('message', message => {
 
     // Launches the appropriate command file
     switch (args[0]) {
- 
+
         case "ping":
             client.commands.get('ping').execute(message, args, config);
-        break;
+            break;
 
         case "kick":
         case "k":
-            client.commands.get('kick').execute(message, args, config, Discord);
-        break;
+            client.commands.get('kick').execute(message, args, config, Discord, GuildModel, mongoose);
+            break;
 
         case "ban":
         case "b":
-            client.commands.get('ban').execute(message, args, config, Discord);
-        break;
+            client.commands.get('ban').execute(message, args, config, Discord, GuildModel, mongoose);
+            break;
 
         case "mute":
-            client.commands.get('mute').execute(message, args, config, Discord, mongoose, GuildModel);
-        break;
+            client.commands.get('mute').execute(message, args, config, Discord, GuildModel, mongoose);
+            break;
 
         case "setup":
             client.commands.get('setup').execute(message, args, config, Discord, mongoose, GuildModel);
-        break;
+            break;
 
         case "prefix":
             client.commands.get('prefix').execute(message, args, config, Discord);
-        break;
+            break;
 
         case "settings":
-            client.commands.get('settings').execute(messgae, args, config, Discord, mongoose, GuildModel);
-        break;
+            client.commands.get('settings').execute(message, args, config, Discord, GuildModel, mongoose);
+            break;
     }
 });
 
-// Logs the bot in
-mongoose.connect(database.url , {
-        useNewUrlParser: true,
-        useFindAndModify: false,
-        useUnifiedTopology: true
+// Logs the bot in to both database and to Discord
+mongoose.connect(database.url, {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
 });
 client.login(token.token);
