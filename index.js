@@ -9,7 +9,6 @@ var database = require('./database.json');
 
 // JSON Files
 const config = require('./config.json');
-const autoMod = require('./autoMod.json');
 
 const fs = require('fs');
 client.commands = new Discord.Collection();
@@ -28,8 +27,8 @@ client.on('ready', () => {
 
     // Set activity
     try {
-        client.user.setActivity(`${config.activity}`, { type: LISTENING }); // LISTENING PLAYING STREAMING
-        console.log(`Set activity to ${config.activity}`)
+        client.user.setActivity(`${config.activity}`, { type: 'LISTENING' }); // LISTENING PLAYING STREAMING
+        console.log(`Set activity to ${config.activity}`);
     } catch (err) {
         console.error(err);
     }

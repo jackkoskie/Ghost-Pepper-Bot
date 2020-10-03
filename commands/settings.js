@@ -12,6 +12,12 @@ module.exports = {
                     var autoModStatus = ":x:"
                 };
 
+                if (req.bannedWords === true) {
+                    var wordFilterStatus = ":white_check_mark:"
+                } else {
+                    var wordFilterStatus = ":x:"
+                }
+
                 if (!args[2]) {
                     const settingsEmbed = new Discord.MessageEmbed()
                         .setColor('#ED1C24')
@@ -32,7 +38,20 @@ module.exports = {
                     switch (args[2]) {
                         case "automod":
                             if (!args[3]) {
-                                message.author.send(`The cur`)
+                                const settingsEmbed = new Discord.MessageEmbed()
+                                    .setColor('#ED1C24')
+                                    .setTitle('~automod~')
+                                    .setAuthor('Ghost Pepper Bot', 'https://cdn.discordapp.com/avatars/753727823264481379/22d88b924f2dab2a2e5d90ad78a1eb7a.webp?size=128', 'https://github.com/goldenxlence/ghost-pepper-bot')
+                                    .addFields(
+                                        { name: "Global AutoMod Status:", value: `${autoModStatus}`, inline: true },
+                                        { name: "Word Filter:", value: `${wordFilterStatus}`, inline: true },
+                                        { name: "Word Filter List:", value: ``, inline: true },
+                                        { name: "Commands", value: `To change a setting, type \`-settings automod {option} [on,off]\``, inline: false }
+                                    )
+                                    .setTimestamp()
+                                    .setFooter('Ghost Pepper Discord Bot');
+
+                                message.author.send(automodEmbed)
                             }
                             break;
                     }
