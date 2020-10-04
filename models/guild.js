@@ -43,4 +43,4 @@ const guildSchema = mongoose.Schema({
     }
 });
 
-module.ecports = mongoose.model('Guild', guildSchema, 'guilds');
+module.exports = mongoose.model('Guild', guildSchema, 'guilds');
