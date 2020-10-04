@@ -36,14 +36,13 @@ client.on('ready', () => {
 
 // Listens for a message and checks if its a command
 client.on('message', message => {
-    let args = message.content.toLowerCase().substring(config.prefix.length).split(" ");
 
     var GuildModel = require('./models/Guild');
     var mongoose = require('mongoose');
     var database = require('./database.json');
 
-    var req = GuildModel.findOne({ id: message.server.id }, function (err, req) {
-        if (req.autoMod = true) {
+    var req = GuildModel.findOne({ "_id": message.guild.id }, function (err, req) {
+        if (req.autoMod === true) {
 
             // Banned Words
             if (req.bannedWords = true) {
@@ -57,44 +56,63 @@ client.on('message', message => {
                         }
                         break;
                     }
-                }
-            }
+                };
+            };
+        };
+
+        // Anything beyond this point will only run if the message starts with the bot prefix
+
+        if (!message.content.startsWith(`${config.prefix}`)) {
+            return;
+        } else {
+
+            let args = message.content.toLowerCase().substring(config.prefix.length).split(" ");
+
+            var GuildModel = require('./models/Guild');
+            var mongoose = require('mongoose');
+            var database = require('./database.json');
         }
-    })
 
-    // Launches the appropriate command file
-    switch (args[0]) {
+        let args = message.content.toLowerCase().substring(config.prefix.length).split(" ");
 
-        case "ping":
-            client.commands.get('ping').execute(message, args, config);
-            break;
+        if (!req) {
+            if (args[0] === "setup") {
+                client.commands.get('setup').execute(message, args, config, Discord, mongoose, GuildModel);
+            };
+        } else {
 
-        case "kick":
-        case "k":
-            client.commands.get('kick').execute(message, args, config, Discord, GuildModel, mongoose);
-            break;
+            // Launches the appropriate command file
 
-        case "ban":
-        case "b":
-            client.commands.get('ban').execute(message, args, config, Discord, GuildModel, mongoose);
-            break;
+            switch (args[0]) {
 
-        case "mute":
-            client.commands.get('mute').execute(message, args, config, Discord, GuildModel, mongoose);
-            break;
+                case "ping":
+                    client.commands.get('ping').execute(message, args, config);
+                    break;
 
-        case "setup":
-            client.commands.get('setup').execute(message, args, config, Discord, mongoose, GuildModel);
-            break;
+                case "kick":
+                case "k":
+                    client.commands.get('kick').execute(message, args, config, Discord, GuildModel, mongoose);
+                    break;
 
-        case "prefix":
-            client.commands.get('prefix').execute(message, args, config, Discord);
-            break;
+                case "ban":
+                case "b":
+                    client.commands.get('ban').execute(message, args, config, Discord, GuildModel, mongoose);
+                    break;
 
-        case "settings":
-            client.commands.get('settings').execute(message, args, config, Discord, GuildModel, mongoose);
-            break;
-    }
+                case "mute":
+                    client.commands.get('mute').execute(message, args, config, Discord, GuildModel, mongoose);
+                    break;
+
+                case "prefix":
+                    client.commands.get('prefix').execute(message, args, config, Discord);
+                    break;
+
+                case "settings":
+                    client.commands.get('settings').execute(message, args, config, Discord, GuildModel, mongoose);
+                    break;
+            }
+        };
+    });
 });
 
 // Logs the bot in to both database and to Discord

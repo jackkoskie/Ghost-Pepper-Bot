@@ -2,9 +2,10 @@ module.exports = {
     name: "settings",
     description: "Allows admins to change settings",
     execute(message, args, config, Discord, mongoose, GuildModel) {
-        var req = GuildModel.findOne({ id: message.server.id }, function (err, req) {
-            if (!message.member.roles.cache.some(role => role.name === req.modRole)) {
+        var req = GuildModel.findOne({ "_id": message.guild.id }, function (err, req) {
+            if (!message.member.roles.cache.some(role => role.name === req.modRole && !message.member.hasPermission('ADMINISTRATOR'))) {
                 message.reply(`Sorry, you do not have permission to use this command!`)
+                return;
             } else {
                 if (req.autoMod === true) {
                     var autoModStatus = ":white_check_mark:"
@@ -44,19 +45,31 @@ module.exports = {
                                     .setAuthor('Ghost Pepper Bot', 'https://cdn.discordapp.com/avatars/753727823264481379/22d88b924f2dab2a2e5d90ad78a1eb7a.webp?size=128', 'https://github.com/goldenxlence/ghost-pepper-bot')
                                     .addFields(
                                         { name: "Global AutoMod Status:", value: `${autoModStatus}`, inline: true },
-                                        { name: "Word Filter:", value: `${wordFilterStatus}`, inline: true },
-                                        { name: "Word Filter List:", value: ``, inline: true },
-                                        { name: "Commands", value: `To change a setting, type \`-settings automod {option} [on,off]\``, inline: false }
+                                        { name: "WordFilter:", value: `${wordFilterStatus}`, inline: true },
+                                        { name: "WordFilterList:", value: ``, inline: true },
+                                        { name: "Commands", value: `To change a setting, type \`-settings automod {option} [on,off,add,remove,reset]\``, inline: false }
                                     )
                                     .setTimestamp()
                                     .setFooter('Ghost Pepper Discord Bot');
 
                                 message.author.send(automodEmbed)
+                            } else {
+                                switch (args[3]) {
+                                    case "wordfilter":
+
+                                        break;
+
+                                    case "wordfilterlist":
+                                        break;
+                                }
                             }
+                            break;
+                        case "prefix":
+                            message.reply('sorry, changing of the prefix is not yet supported.')
                             break;
                     }
                 }
             }
-        })
+        });
     }
 }

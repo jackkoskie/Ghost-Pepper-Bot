@@ -1,21 +1,18 @@
+const { Message } = require('discord.js');
 const mongoose = require('mongoose');
 const { isBoolean } = require('util');
 
 const guildSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
-    guildID: String,
+    _id: String,
     guildName: String,
 
     modRole: {
-        defult: "Moderator",
-        type: String
+        type: String,
     },
     memberRole: {
-        defult: "Member",
         type: String
     },
     mutedRole: {
-        defult: "Muted",
         type: String
     },
 
@@ -30,15 +27,12 @@ const guildSchema = mongoose.Schema({
     },
 
     autoMod: {
-        defult: false,
         type: Boolean
     },
     bannedWords: {
-        defult: false,
         type: Boolean
     },
     bannedWordsList: {
-        defult: [],
         type: Array
     }
 });

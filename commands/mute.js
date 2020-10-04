@@ -5,7 +5,7 @@ module.exports = {
     name: "mute",
     description: "Mutes the user for a specific amount of time",
     execute(message, args, config, Discord, GuildModel, mongoose) {
-        var req = GuildModel.findOne({ "id": message.guild.id }, function (err, req) {
+        var req = GuildModel.findOne({ _id: message.guild.id }, function (err, req) {
             if (message.member.roles.cache.some(role => role.name === req.modRole)) {
                 let person = message.guild.member(message.mentions.users.first())
                 if (!person) return message.reply("I couldn't find that user.");

@@ -2,7 +2,7 @@ module.exports = {
     name: 'ban',
     description: 'basic ban command',
     execute(message, args, config, Discord, GuildModel, mongoose) {
-        var req = GuildModel.findOne({ id: message.server.id }, function (err, req) {
+        var req = GuildModel.findOne({ _id: message.server.id }, function (err, req) {
             if (message.member.roles.cache.some(role => role.name === req.modRole)) {
                 // Looks for the mentioned user
                 const user = message.mentions.users.first();
