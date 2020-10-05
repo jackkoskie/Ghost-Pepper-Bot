@@ -33,8 +33,7 @@ module.exports = {
                         .setTimestamp()
                         .setFooter('Ghost Pepper Discord Bot');
 
-                    message.author.send(settingsEmbed)
-                    message.reply('check your DMs!')
+                    message.channel.send(settingsEmbed)
                 } else {
                     switch (args[2]) {
                         case "automod":
@@ -52,11 +51,21 @@ module.exports = {
                                     .setTimestamp()
                                     .setFooter('Ghost Pepper Discord Bot');
 
-                                message.author.send(automodEmbed)
+                                message.channel.send(automodEmbed)
                             } else {
                                 switch (args[3]) {
                                     case "wordfilter":
-
+                                        if (!args[4]) {
+                                            message.channel.send(`Word filter is set to ${wordFilterStatus}`)
+                                        } else {
+                                            if (args[4] === "on") {
+                                                try {
+                                                    GuildModel.updateOne({ "_id": message.guild.id }, { $set: { "bannedWords": true }, $currentDate: { lastModified: true } });
+                                                } catch (err) {
+                                                    console.err(`Encountered an error when trying to update bannedWords in ${message.guild.id}. \nThe following error was received:\n${err}`)
+                                                }
+                                            }
+                                        }
                                         break;
 
                                     case "wordfilterlist":
