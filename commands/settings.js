@@ -45,7 +45,6 @@ module.exports = {
                                     .addFields(
                                         { name: "Global AutoMod Status:", value: `${autoModStatus}`, inline: true },
                                         { name: "WordFilter:", value: `${wordFilterStatus}`, inline: true },
-                                        { name: "WordFilterList:", value: ``, inline: true },
                                         { name: "Commands", value: `To change a setting, type \`-settings automod {option} [on,off,add,remove,reset]\``, inline: false }
                                     )
                                     .setTimestamp()
@@ -65,10 +64,15 @@ module.exports = {
                                                     console.err(`Encountered an error when trying to update bannedWords in ${message.guild.id}. \nThe following error was received:\n${err}`)
                                                 }
                                             }
-                                        }
-                                        break;
 
-                                    case "wordfilterlist":
+                                            if (args[4] === "off") {
+                                                try {
+                                                    GuildModel.updateOne({ "_id": message.guild.id }, { $set: { "bannedWords": false }, $currentDate: { lastModified: true } });
+                                                } catch (err) {
+                                                    console.err(`Encountered an error when trying to update bannedWords in ${message.guild.id}. \nThe following error was received:\n${err}`)
+                                                }
+                                            }
+                                        }
                                         break;
                                 }
                             }
