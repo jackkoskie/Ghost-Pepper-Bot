@@ -32,9 +32,6 @@ const guildSchema = mongoose.Schema({
     bannedWords: {
         type: Boolean
     },
-    bannedWordsList: {
-        type: Array
-    }
 });
 
 module.exports = mongoose.model('Guild', guildSchema, 'guilds');

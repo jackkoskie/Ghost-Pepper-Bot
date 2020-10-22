@@ -27,6 +27,9 @@ module.exports = {
                         .addFields(
                             { name: "Server Name:", value: `${req.name}`, inline: true },
                             { name: "AutoMod:", value: `${autoModStatus}`, inline: true },
+                            { name: "MemberRole:", value: `${req.memberRole}`, inline: true },
+                            { name: "ModeratorRole:", value: `${req.modRole}`, inline: true },
+                            { name: "MutedRole", value: `${req.mutedRole}`, inline: true },
                             { name: "Prefix:", value: "-", inline: true },
                             { name: "Commands", value: `To change a setting, type \`-settings {option}\``, inline: false }
                         )
@@ -79,6 +82,27 @@ module.exports = {
                             break;
                         case "prefix":
                             message.reply('sorry, changing of the prefix is not yet supported.')
+                            break;
+                        case "moderatorRole":
+                            if (!args[3]) {
+                                if (!req.modRole) {
+                                    message.reply(`There is no moderator role set. Please run the command \`-settings moderatorRole <EXACT NAME OF ROLE>\` to set one.`);
+                                } else {
+                                    message.reply(`The current moderatorRole is ${req.modeRole}.`);
+                                }
+                            } else {
+                                try {
+                                    GuildModel.updateOne({ "_id": message.guild.id }, { $set: { "modRole": args[3] }, $currentDate: { lastModified: true } });
+                                    message.reply(`updated the moderatorRole to $`)
+                                } catch {
+                                    console.error(`There was an error trying to update the modRole in ${message.guild.id}. The following error was given:\n${err}`);
+                                    message.reply(`sorry, there was an error trying to update the modRole. Please try again in a few minutes.`);
+                                }
+                            }
+                            break;
+                        case "memberRole":
+                            break;
+                        case "mutedRole":
                             break;
                     }
                 }
