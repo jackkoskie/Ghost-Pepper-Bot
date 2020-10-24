@@ -12,7 +12,7 @@ module.exports = {
 
                 let muteTime = args[2];
 
-                let muteReason = args[3];
+                let muteReason = args.slice(3).join(' ');
 
                 if (!muteTime) {
                     return message.reply("Please specify an ammount of time to mute the user.")
