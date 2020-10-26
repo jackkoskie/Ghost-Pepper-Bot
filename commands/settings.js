@@ -83,7 +83,8 @@ module.exports = {
                         case "prefix":
                             message.reply('sorry, changing of the prefix is not yet supported.')
                             break;
-                        case "moderatorRole":
+                        case "moderatorrole":
+                        case "modrole":
                             if (!args[3]) {
                                 if (!req.modRole) {
                                     message.reply(`There is no moderator role set. Please run the command \`-settings moderatorRole <EXACT NAME OF ROLE>\` to set one.`);
@@ -100,7 +101,8 @@ module.exports = {
                                 }
                             }
                             break;
-                        case "memberRole":
+                        case "memberrole":
+                        case "memrole":
                             if (!args[3]) {
                                 if (!req.memberRole) {
                                     message.reply(`There is no member role set. Please run the command \`-settings memberRole <EXACT NAME OF ROLE>\` to set one.`);
@@ -117,7 +119,8 @@ module.exports = {
                                 }
                             }
                             break;
-                        case "mutedRole":
+                        case "mutedrole":
+                        case "muterole":
                             if (!args[3]) {
                                 if (!req.mutedRole) {
                                     message.reply(`There is no muted role set. Please run the command \`-settings mutedRole <EXACT NAME OF ROLE>\` to set one.`);
