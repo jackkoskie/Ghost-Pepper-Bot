@@ -1,6 +1,8 @@
 # Ghost Pepper Bot
 Ghost Pepper is a general purpose Discord bot. The way it is currently setup, it will run on your own system and will use your own system resources.
 
+|discord.js version|
+
 ## Instalation Instructions
 1. Run `GP-Installer.exe` and follow any prompts
 1. Open the folder where you installed the bot and hold SHIFT and right-click in the empty space of the folder and select "Open PowerShell window here".
