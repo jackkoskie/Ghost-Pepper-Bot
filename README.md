@@ -1,7 +1,7 @@
 # Ghost Pepper Bot
 Ghost Pepper is a general purpose Discord bot. The way it is currently setup, it will run on your own system and will use your own system resources.
 
-|discord.js version|
+[![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fgoldenxlence%2Fghost-pepper-bot)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fgoldenxlence%2Fghost-pepper-bot)     [![GitHub license](https://img.shields.io/github/license/goldenxlence/ghost-pepper-bot)](https://github.com/GoldenXLence/Ghost-Pepper-Bot/blob/master/LICENSE)     [![GitHub stars](https://img.shields.io/github/stars/goldenxlence/ghost-pepper-bot)](https://github.com/goldenxlence/ghost-pepper-bot/stargazers)     [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=GoldenXLence/Ghost-Pepper-Bot)](https://dependabot.com)
 
 ## Instalation Instructions
 1. Run `GP-Installer.exe` and follow any prompts
