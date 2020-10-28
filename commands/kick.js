@@ -36,6 +36,8 @@ module.exports = {
 
                             message.channel.send(kickEmbed);
 
+                            message.delete();
+
                             member.id.send(banMessage);
 
                             console.log(`Sucsessfuly kicked ${user.tag} in ${message.guild}`)

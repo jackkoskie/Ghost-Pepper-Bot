@@ -32,6 +32,12 @@ module.exports = {
 
                             message.channel.send(banEmbed);
 
+                            try {
+
+                            } catch (err) {
+
+                            }
+
                             console.log(`Sucsessfuly banned ${user.tag} in ${message.guild}`)
                         }).catch(err => {
                             // Catches any errors

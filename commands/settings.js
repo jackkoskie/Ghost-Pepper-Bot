@@ -95,7 +95,7 @@ module.exports = {
                                 try {
                                     GuildModel.updateOne({ "_id": message.guild.id }, { $set: { "modRole": args[3] }, $currentDate: { lastModified: true } });
                                     message.reply(`updated the moderatorRole to ${args[3]}`)
-                                } catch {
+                                } catch (err) {
                                     console.error(`There was an error trying to update the modRole in ${message.guild.id}. The following error was given:\n${err}`);
                                     message.reply(`sorry, there was an error trying to update the modRole. Please try again in a few minutes.`);
                                 }
@@ -113,7 +113,7 @@ module.exports = {
                                 try {
                                     GuildModel.updateOne({ "_id": message.guild.id }, { $set: { "memberRole": args[3] }, $currentDate: { lastModified: true } });
                                     message.reply(`updated the memberRole to ${args[3]}`)
-                                } catch {
+                                } catch (err) {
                                     console.error(`There was an error trying to update the memberRole in ${message.guild.id}. The following error was given:\n${err}`);
                                     message.reply(`sorry, there was an error trying to update the memberRole. Please try again in a few minutes. If the problem persists, please contact the developers on the support server.`);
                                 }
@@ -131,7 +131,7 @@ module.exports = {
                                 try {
                                     GuildModel.updateOne({ "_id": message.guild.id }, { $set: { "mutedRole": args[3] }, $currentDate: { lastModified: true } });
                                     message.reply(`updated the mutedRole to ${args[3]}`)
-                                } catch {
+                                } catch (err) {
                                     console.error(`There was an error trying to update the mutedRole in ${message.guild.id}. The following error was given:\n${err}`);
                                     message.reply(`sorry, there was an error trying to update the mutedRole. Please try again in a few minutes. If the problem persists, please contact the developers on the support server.`);
                                 }
