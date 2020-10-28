@@ -100,6 +100,7 @@ client.on('message', message => {
                     break;
 
                 case "mute":
+                case "m":
                     client.commands.get('mute').execute(message, args, config, Discord, GuildModel, mongoose);
                     break;
 
@@ -110,6 +111,11 @@ client.on('message', message => {
                 case "settings":
                     client.commands.get('settings').execute(message, args, config, Discord, GuildModel, mongoose);
                     break;
+                case "warn":
+                case "w":
+                    client.commands.get('warn').execute(message, args, config);
+                    break;
+
             }
         };
     });
