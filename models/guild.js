@@ -32,6 +32,19 @@ const guildSchema = mongoose.Schema({
     bannedWords: {
         type: Boolean
     },
+
+    warns: {
+        type: Array,
+    },
+    bans: {
+        type: Array,
+    },
+    kicks: {
+        type: Array,
+    },
+    mutes: {
+        type: Array,
+    },
 });
 
 module.exports = mongoose.model('Guild', guildSchema, 'guilds');
