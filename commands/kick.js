@@ -3,7 +3,7 @@ module.exports = {
     description: 'basic kick command',
     execute(message, args, config, Discord, GuildModel, mongoose) {
         var req = GuildModel.findOne({ _id: message.server.id }, function (err, req) {
-            if (message.member.roles.cache.some(role => role.name === req.modRole)) {
+            if (message.member.roles.cache.some(role => role.name === req.modRole) || message.member.hasPermission('ADMINISTRATOR')) {
                 // Looks for the mentioned user
                 const user = message.mentions.users.first();
 
@@ -35,8 +35,6 @@ module.exports = {
                                 .setFooter('Ghost Pepper Discord Bot');
 
                             message.channel.send(kickEmbed);
-
-                            message.delete();
 
                             member.id.send(banMessage);
 

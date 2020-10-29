@@ -3,7 +3,7 @@ module.exports = {
     description: 'basic ban command',
     execute(message, args, config, Discord, GuildModel, mongoose) {
         var req = GuildModel.findOne({ _id: message.server.id }, function (err, req) {
-            if (message.member.roles.cache.some(role => role.name === req.modRole)) {
+            if (message.member.roles.cache.some(role => role.name === req.modRole || message.member.hasPermission('ADMINISTRATOR'))) {
                 // Looks for the mentioned user
                 const user = message.mentions.users.first();
 
@@ -14,6 +14,9 @@ module.exports = {
 
                         // Gets the ban reason
                         const banReason = args.slice(2).join(' ');
+
+                        // Deletes the original message
+                        message.delete({ timeout: 500 }).catch(console.error);
 
                         // Bans the user
                         member.ban({ reason: banReason }).then(() => {
@@ -31,12 +34,6 @@ module.exports = {
                                 .setFooter('Ghost Pepper Discord Bot');
 
                             message.channel.send(banEmbed);
-
-                            try {
-
-                            } catch (err) {
-
-                            }
 
                             console.log(`Sucsessfuly banned ${user.tag} in ${message.guild}`)
                         }).catch(err => {

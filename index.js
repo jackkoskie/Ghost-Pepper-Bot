@@ -113,7 +113,7 @@ client.on('message', message => {
                     break;
                 case "warn":
                 case "w":
-                    client.commands.get('warn').execute(message, args, config);
+                    client.commands.get('warn').execute(message, args, config, Discord, GuildModel, mongoose);
                     break;
 
             }
