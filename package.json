@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/GoldenXLence/Ghost-Pepper-Bot#readme",
   "dependencies": {
+    "bad-words": "^3.0.3",
     "discord.js": "^12.4.1",
     "mongoose": "^5.10.11",
     "ms": "^2.1.2",
