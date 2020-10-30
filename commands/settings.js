@@ -32,7 +32,7 @@ module.exports = {
                                 { name: "ModeratorRole:", value: `${req.modRole}`, inline: true },
                                 { name: "MutedRole", value: `${req.mutedRole}`, inline: true },
                                 { name: "Prefix:", value: "-", inline: true },
-                                { name: "ModLog:", value: 'Unset' },
+                                { name: "ModLog:", value: 'Unset', inline: true },
                                 { name: "Commands", value: `To change a setting, type \`-settings {option}\`\nTo set the modLog channel, type \`-modlog here\` `, inline: false }
                             )
                             .setTimestamp()
@@ -51,7 +51,7 @@ module.exports = {
                                 { name: "ModeratorRole:", value: `${req.modRole}`, inline: true },
                                 { name: "MutedRole", value: `${req.mutedRole}`, inline: true },
                                 { name: "Prefix:", value: "-", inline: true },
-                                { name: "ModLog:", value: 'Unset' },
+                                { name: "ModLog:", value: `<#${req.modLog}>`, inline: true },
                                 { name: "Commands", value: `To change a setting, type \`-settings {option}\``, inline: false }
                             )
                             .setTimestamp()
