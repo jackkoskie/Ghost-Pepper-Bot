@@ -116,7 +116,8 @@ client.on('message', message => {
                     client.commands.get('warn').execute(message, args, config, Discord, GuildModel, mongoose);
                     break;
             };
-        });
+        }
+    });
 });
 
 // Logs the bot in to both database and to Discord
