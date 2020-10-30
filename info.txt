@@ -1,2 +1,2 @@
 Bot invite:
-https://discord.com/api/oauth2/authorize?client_id=753727823264481379&permissions=502525046&scope=bot
+http://gg.gg/ghostpepper
