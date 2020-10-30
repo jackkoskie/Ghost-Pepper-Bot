@@ -6,6 +6,11 @@ const ms = require('ms');
 var GuildModel = require('./models/Guild');
 var mongoose = require('mongoose');
 var database = require('./database.json');
+const error = require('./errors');
+
+// bad-words
+const Filter = require('bad-words');
+var filter = new Filter();
 
 // JSON Files
 const config = require('./config.json');
@@ -46,17 +51,15 @@ client.on('message', message => {
 
             // Banned Words
             if (req.bannedWords = true) {
-                for (var i = 0; i < req.bannedWordsList.length; i++) {
-                    if (message.content.toLowerCase().includes(req.bannedWordsList[i])) {
-                        try {
-                            message.delete();
-                            message.reply('you cant say that here!');
-                        } catch (err) {
-                            console.error(`Error trying to delete a message in ${message.guild.name}`);
-                        }
-                        break;
+                if (filter.isProfane(message)) {
+                    try {
+                        message.delete();
+                        message.reply(error.wordFilter());
+                    } catch (err) {
+                        console.error(`Error trying to delete a message in ${message.guild.name}`);
                     }
-                };
+                    break;
+                }
             };
         };
 
@@ -69,7 +72,7 @@ client.on('message', message => {
             let args = message.content.toLowerCase().substring(config.prefix.length).split(" ");
 
             var GuildModel = require('./models/Guild');
-            var mongoose = require('mongoose');
+            var mongoose, error = require('mongoose');
             var database = require('./database.json');
         }
 
@@ -77,7 +80,7 @@ client.on('message', message => {
 
         if (!req) {
             if (args[0] === "setup") {
-                client.commands.get('setup').execute(message, args, config, Discord, mongoose, GuildModel);
+                client.commands.get('setup').execute(message, args, config, Discord, mongoose, error, GuildModel);
             };
         } else {
 
@@ -91,29 +94,29 @@ client.on('message', message => {
 
                 case "kick":
                 case "k":
-                    client.commands.get('kick').execute(message, args, config, Discord, GuildModel, mongoose);
+                    client.commands.get('kick').execute(message, args, config, Discord, GuildModel, mongoose, error);
                     break;
 
                 case "ban":
                 case "b":
-                    client.commands.get('ban').execute(message, args, config, Discord, GuildModel, mongoose);
+                    client.commands.get('ban').execute(message, args, config, Discord, GuildModel, mongoose, error);
                     break;
 
                 case "mute":
                 case "m":
-                    client.commands.get('mute').execute(message, args, config, Discord, GuildModel, mongoose);
+                    client.commands.get('mute').execute(message, args, config, Discord, GuildModel, mongoose, error);
                     break;
 
                 case "prefix":
-                    client.commands.get('prefix').execute(message, args, config, Discord);
+                    client.commands.get('prefix').execute(message, args, config, Discord, error);
                     break;
 
                 case "settings":
-                    client.commands.get('settings').execute(message, args, config, Discord, GuildModel, mongoose);
+                    client.commands.get('settings').execute(message, args, config, Discord, GuildModel, mongoose, error);
                     break;
                 case "warn":
                 case "w":
-                    client.commands.get('warn').execute(message, args, config, Discord, GuildModel, mongoose);
+                    client.commands.get('warn').execute(message, args, config, Discord, GuildModel, mongoose, error);
                     break;
             };
         }
