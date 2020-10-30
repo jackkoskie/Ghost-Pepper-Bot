@@ -8,7 +8,7 @@ module.exports = {
                         var req = GuildModel.findOne({ "_id": message.guild.id }, function (err, req) {
                                 if (!req) {
                                         try {
-                                                var doc = new GuildModel({ "_id": message.guild.id, "guildName": message.guild.name, "modRole": "Moderator", "memberRole": "Member", "mutedRole": "Muted", "banMessage": "", "kickMessage": "", "muteMessage": "", "autoMod": false, "bannedWords": false });
+                                                var doc = new GuildModel({ "_id": message.guild.id, "guildName": message.guild.name, "modRole": "Moderator", "memberRole": "Member", "mutedRole": "Muted", "autoMod": false, "bannedWords": false, "modLog": "" });
                                                 doc.save();
                                                 console.log(`Added ${message.guild.name} to database with _id: ${message.guild.id}`)
                                                 message.reply(`your server has been added to our database but only with the basic information. Please use ${config.prefix}settings to change the settings for your server.`)
@@ -25,7 +25,7 @@ module.exports = {
                                         if (!req) return;
                                         try {
                                                 GuildModel.deleteOne({ "_id": message.guild.id });
-                                                var doc = new GuildModel({ "_id": message.guild.id, "guildName": message.guild.name, "modRole": "Moderator", "memberRole": "Member", "mutedRole": "Muted", "banMessage": "", "kickMessage": "", "muteMessage": "", "autoMod": false, "bannedWords": false });
+                                                var doc = new GuildModel({ "_id": message.guild.id, "guildName": message.guild.name, "modRole": "Moderator", "memberRole": "Member", "mutedRole": "Muted", "autoMod": false, "bannedWords": false });
                                                 doc.save();
                                                 console.log(`Added ${message.guild.name} to database with _id: ${message.guild.id}`)
                                                 message.reply(`your server has been reset in our database and now only has the basic information. Please use ${config.prefix}settings to change the settings for your server.`)

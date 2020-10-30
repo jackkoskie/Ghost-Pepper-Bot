@@ -20,23 +20,45 @@ module.exports = {
                 }
 
                 if (!args[2]) {
-                    const settingsEmbed = new Discord.MessageEmbed()
-                        .setColor('#ED1C24')
-                        .setTitle('~settings~')
-                        .setAuthor('Ghost Pepper Bot', 'https://cdn.discordapp.com/avatars/753727823264481379/22d88b924f2dab2a2e5d90ad78a1eb7a.webp?size=128', 'https://github.com/goldenxlence/ghost-pepper-bot')
-                        .addFields(
-                            { name: "Server Name:", value: `${req.name}`, inline: true },
-                            { name: "AutoMod:", value: `${autoModStatus}`, inline: true },
-                            { name: "MemberRole:", value: `${req.memberRole}`, inline: true },
-                            { name: "ModeratorRole:", value: `${req.modRole}`, inline: true },
-                            { name: "MutedRole", value: `${req.mutedRole}`, inline: true },
-                            { name: "Prefix:", value: "-", inline: true },
-                            { name: "Commands", value: `To change a setting, type \`-settings {option}\``, inline: false }
-                        )
-                        .setTimestamp()
-                        .setFooter('Ghost Pepper Discord Bot');
+                    if (!req.modLog) {
+                        const settingsEmbed = new Discord.MessageEmbed()
+                            .setColor('#ED1C24')
+                            .setTitle('~settings~')
+                            .setAuthor('Ghost Pepper Bot', 'https://cdn.discordapp.com/avatars/753727823264481379/22d88b924f2dab2a2e5d90ad78a1eb7a.webp?size=128', 'https://github.com/goldenxlence/ghost-pepper-bot')
+                            .addFields(
+                                { name: "Server Name:", value: `${req.name}`, inline: true },
+                                { name: "AutoMod:", value: `${autoModStatus}`, inline: true },
+                                { name: "MemberRole:", value: `${req.memberRole}`, inline: true },
+                                { name: "ModeratorRole:", value: `${req.modRole}`, inline: true },
+                                { name: "MutedRole", value: `${req.mutedRole}`, inline: true },
+                                { name: "Prefix:", value: "-", inline: true },
+                                { name: "ModLog:", value: 'Unset' },
+                                { name: "Commands", value: `To change a setting, type \`-settings {option}\`\nTo set the modLog channel, type \`-modlog here\` `, inline: false }
+                            )
+                            .setTimestamp()
+                            .setFooter('Ghost Pepper Discord Bot');
 
-                    message.channel.send(settingsEmbed)
+                        message.channel.send(settingsEmbed)
+                    } else {
+                        const settingsEmbed = new Discord.MessageEmbed()
+                            .setColor('#ED1C24')
+                            .setTitle('~settings~')
+                            .setAuthor('Ghost Pepper Bot', 'https://cdn.discordapp.com/avatars/753727823264481379/22d88b924f2dab2a2e5d90ad78a1eb7a.webp?size=128', 'https://github.com/goldenxlence/ghost-pepper-bot')
+                            .addFields(
+                                { name: "Server Name:", value: `${req.name}`, inline: true },
+                                { name: "AutoMod:", value: `${autoModStatus}`, inline: true },
+                                { name: "MemberRole:", value: `${req.memberRole}`, inline: true },
+                                { name: "ModeratorRole:", value: `${req.modRole}`, inline: true },
+                                { name: "MutedRole", value: `${req.mutedRole}`, inline: true },
+                                { name: "Prefix:", value: "-", inline: true },
+                                { name: "ModLog:", value: 'Unset' },
+                                { name: "Commands", value: `To change a setting, type \`-settings {option}\``, inline: false }
+                            )
+                            .setTimestamp()
+                            .setFooter('Ghost Pepper Discord Bot');
+
+                        message.channel.send(settingsEmbed)
+                    };
                 } else {
                     switch (args[2]) {
                         case "automod":
