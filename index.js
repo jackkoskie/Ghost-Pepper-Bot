@@ -63,11 +63,11 @@ client.on('message', message => {
             };
         };
 
-        // Anything beyond this point will only run if the message starts with the bot prefix
-
         if (!message.content.startsWith(`${config.prefix}`)) {
             return;
         } else {
+
+            // Anything beyond this point will only run if the message starts with the bot prefix
 
             let args = message.content.toLowerCase().substring(config.prefix.length).split(" ");
 

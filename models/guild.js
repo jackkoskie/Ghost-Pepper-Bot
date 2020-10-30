@@ -16,16 +16,6 @@ const guildSchema = mongoose.Schema({
         type: String
     },
 
-    banMessage: {
-        type: String
-    },
-    kickMessage: {
-        type: String
-    },
-    muteMessage: {
-        type: String
-    },
-
     autoMod: {
         type: Boolean
     },
