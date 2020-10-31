@@ -12,6 +12,10 @@ module.exports = {
 
     wordFilter: function () {
         return `You cant say that here!`
+    },
+
+    data: function (variable) {
+        return `Sorry, there was an error when trying to update ${variable}`
     }
 
 };
