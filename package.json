@@ -19,7 +19,7 @@
   "dependencies": {
     "bad-words": "^3.0.4",
     "discord.js": "^12.5.1",
-    "mongoose": "^5.11.1",
+    "mongoose": "^5.11.4",
     "ms": "^2.1.2",
     "node": "^15.3.0",
     "nodemon": "^2.0.6",
